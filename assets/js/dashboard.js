@@ -1,6 +1,4 @@
-/* ===============================
-   FIREBASE IMPORTS
-=============================== */
+/* FIREBASE IMPORTS */
 
 import { auth, db } from "../../firebase/firebase-config.js";
 
@@ -20,9 +18,7 @@ import {
     getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-/* ===============================
-   AUTH GUARD
-=============================== */
+/* AUTH GUARD */
 
 let currentUser = null;
 let transactionsRef = null;
@@ -30,19 +26,14 @@ let incomeExpenseChart = null;
 let expenseCategoryChart = null;
 
 onAuthStateChanged(auth, async (user) => {
-
     if (!user) {
         window.location.href = "login.html";
         return;
     }
 
     currentUser = user;
-
     transactionsRef = collection(
-        db,
-        "users",
-        currentUser.uid,
-        "transactions"
+        db, "users", currentUser.uid, "transactions"
     );
 
     loadTransactions();
@@ -51,36 +42,33 @@ onAuthStateChanged(auth, async (user) => {
     const userAvatar = document.querySelector(".user-avatar");
     const transactionList = document.getElementById("transactionList");
 
-let fullName = user.displayName || "User";
+    let fullName = user.displayName || "User";
 
-try {
-    const userRef = doc(db, "users", currentUser.uid);
-    const userSnap = await getDoc(userRef);
+    try {
+        const userRef = doc(db, "users", currentUser.uid);
+        const userSnap = await getDoc(userRef);
 
-    if (userSnap.exists()) {
-        const userData = userSnap.data();
-        fullName = userData.name || fullName;
+        if (userSnap.exists()) {
+            const userData = userSnap.data();
+            fullName = userData.name || fullName;
+        }
+    } catch (error) {
+        console.error("User Name Error:", error);
     }
-} catch (error) {
-    console.error("User Name Error:", error);
-}
 
-if (userName) {
-    userName.textContent = fullName;
-}
+    if (userName) {
+        userName.textContent = fullName;
+    }
 
-if (userAvatar) {
-    userAvatar.textContent =
-        (fullName || user.email || "U")
-            .charAt(0)
-            .toUpperCase();
-}
-
+    if (userAvatar) {
+        userAvatar.textContent =
+            (fullName || user.email || "U")
+                .charAt(0)
+                .toUpperCase();
+    }
 });
 
-/* ===============================
-   SIDEBAR TOGGLE
-=============================== */
+/* SIDEBAR TOGGLE */
 
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.querySelector(".sidebar");
@@ -91,258 +79,142 @@ if (menuToggle && sidebar) {
     });
 }
 
-// ===============================
 // INCOME VS EXPENSE CHART
-// ===============================
 
 const incomeExpenseCanvas =
     document.getElementById("incomeExpenseChart");
 
 if (incomeExpenseCanvas) {
-
     incomeExpenseChart = new Chart(incomeExpenseCanvas, {
-
         type: "bar",
-
         data: {
-
-labels: [
-    "Jan", "Feb", "Mar", "Apr",
-    "May", "Jun", "Jul", "Aug",
-    "Sep", "Oct", "Nov", "Dec"
-],
-
+            labels: [
+                "Jan", "Feb", "Mar", "Apr",
+                "May", "Jun", "Jul", "Aug",
+                "Sep", "Oct", "Nov", "Dec"
+            ],
             datasets: [
-
                 {
                     label: "Income",
-
-data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: "#22C55E",
-
                     borderRadius: 10
                 },
-
                 {
                     label: "Expense",
-
-data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: "#2563EB",
-
                     borderRadius: 10
                 }
-
             ]
-
         },
-
         options: {
-
             responsive: true,
-
             maintainAspectRatio: false,
-
             plugins: {
-
                 legend: {
-
                     labels: {
-
                         color: "#CBD5E1"
-
                     }
-
                 }
-
             },
-
             scales: {
-
                 x: {
-
                     ticks: {
-
                         color: "#94A3B8"
-
                     },
-
                     grid: {
-
                         display: false
-
                     }
-
                 },
-
                 y: {
-
                     ticks: {
-
                         color: "#94A3B8"
-
                     },
-
                     grid: {
-
                         color: "rgba(255,255,255,.08)"
-
                     }
-
                 }
-
             }
-
         }
-
     });
-
 }
 
-// ===============================
 // EXPENSE CATEGORY CHART
-// ===============================
 
 const expenseCategoryCanvas =
     document.getElementById("expenseCategoryChart");
 
 if (expenseCategoryCanvas) {
-
     expenseCategoryChart = new Chart(expenseCategoryCanvas, {
-
         type: "doughnut",
-
         data: {
-
-            labels: [
-                "Food",
-                "Transport",
-                "Shopping",
-                "Bills",
-                "Others"
-            ],
-
+            labels: ["Food", "Transport", "Shopping", "Bills", "Others"],
             datasets: [{
+                data: [35, 20, 18, 15, 12],
 
-                data: [
-                    35,
-                    20,
-                    18,
-                    15,
-                    12
-                ],
-
-                backgroundColor: [
-                    "#22C55E",
-                    "#2563EB",
-                    "#F59E0B",
-                    "#EF4444",
-                    "#8B5CF6"
-                ],
-
+                backgroundColor: ["#22C55E", "#2563EB", "#F59E0B", "#EF4444", "#8B5CF6"],
                 borderWidth: 0,
-
                 hoverOffset: 12
-
             }]
-
         },
-
         options: {
-
             responsive: true,
-
             maintainAspectRatio: false,
-
             cutout: "68%",
-
             plugins: {
-
                 legend: {
-
                     position: "bottom",
-
                     labels: {
-
                         color: "#CBD5E1",
-
                         padding: 18,
-
                         usePointStyle: true,
-
                         pointStyle: "circle"
-
                     }
-
                 }
-
             }
-
         }
-
     });
-
 }
 
-// ===============================
 // TRANSACTION MODAL
-// ===============================
 
 const openModalBtn = document.getElementById("openModal");
 const closeModalBtn = document.getElementById("closeModal");
 const transactionModal = document.getElementById("transactionModal");
 
 if (openModalBtn && transactionModal) {
-
     openModalBtn.addEventListener("click", () => {
-
         transactionModal.classList.add("active");
-
     });
-
 }
 
 if (closeModalBtn && transactionModal) {
-
     closeModalBtn.addEventListener("click", () => {
-
         transactionModal.classList.remove("active");
-
     });
-
 }
 
 // Close when clicking outside
 
 transactionModal?.addEventListener("click", (e) => {
-
     if (e.target === transactionModal) {
-
         transactionModal.classList.remove("active");
-
     }
-
 });
 
 // ESC Key Support
 
 document.addEventListener("keydown", (e) => {
-
     if (
         e.key === "Escape" &&
         transactionModal.classList.contains("active")
     ) {
-
         transactionModal.classList.remove("active");
-
     }
-
 });
 
-// ===============================
 // ADD TRANSACTION TO FIRESTORE
-// ===============================
 
 const transactionForm = document.getElementById("transactionForm");
 
@@ -369,68 +241,55 @@ if (transactionForm) {
         const type = document.getElementById("transactionType").value;
         const category = document.getElementById("transactionCategory").value;
         const date = document.getElementById("transactionDate").value;
-        const saveBtn =
-    document.getElementById("saveTransactionBtn");
+        const saveBtn = document.getElementById("saveTransactionBtn");
 
-if (!title || !amount || !type || !category || !date) {
-    showDashboardToast("Please fill all fields", "error");
-    return;
-}
+        if (!title || !amount || !type || !category || !date) {
+            showDashboardToast("Please fill all fields", "error");
+            return;
+        }
 
-if (amount <= 0) {
-    showDashboardToast("Amount must be greater than 0", "error");
-    return;
-}
+        if (amount <= 0) {
+            showDashboardToast("Amount must be greater than 0", "error");
+            return;
+        }
 
-const today = new Date().toISOString().split("T")[0];
+        const today = new Date().toISOString().split("T")[0];
 
-if (date > today) {
-    showDashboardToast("Future date is not allowed", "error");
-    return;
-}
+        if (date > today) {
+            showDashboardToast("Future date is not allowed", "error");
+            return;
+        }
 
         try {
-await addDoc(transactionsRef, {
-    title,
-    amount,
-    type,
-    category,
-    date,
-    createdAt: serverTimestamp()
-});
+            await addDoc(transactionsRef, { title, amount, type, category, date, createdAt: serverTimestamp() });
 
-saveBtn.disabled = true;
-saveBtn.innerHTML = `
+            saveBtn.disabled = true;
+            saveBtn.innerHTML = `
     <i class="fa-solid fa-spinner fa-spin"></i>
     Saving...
 `;
 
-// Refresh Dashboard Data
-await loadTransactions();
+            // Refresh Dashboard Data
+            await loadTransactions();
+            // Reset Form
+            transactionForm.reset();
+            // Close Modal
+            transactionModal.classList.remove("active");
+            // Success Message
+            showDashboardToast("Transaction added successfully", "success");
+            saveBtn.disabled = false;
 
-// Reset Form
-transactionForm.reset();
-
-// Close Modal
-transactionModal.classList.remove("active");
-
-// Success Message
-showDashboardToast("Transaction added successfully", "success");
-
-saveBtn.disabled = false;
-
-saveBtn.innerHTML = `
+            saveBtn.innerHTML = `
     <i class="fa-solid fa-plus"></i>
     Save Transaction
 `;
 
         } catch (error) {
             console.error("Transaction Error:", error);
-showDashboardToast("Failed to add transaction", "error");
+            showDashboardToast("Failed to add transaction", "error");
+            saveBtn.disabled = false;
 
-saveBtn.disabled = false;
-
-saveBtn.innerHTML = `
+            saveBtn.innerHTML = `
     <i class="fa-solid fa-plus"></i>
     Save Transaction
 `;
@@ -438,81 +297,62 @@ saveBtn.innerHTML = `
     });
 }
 
-// ===============================
 // LOAD TRANSACTIONS
-// ===============================
+
 async function loadTransactions() {
-
     if (!transactionsRef) return;
-
     const transactionList = document.getElementById("transactionList");
-
     try {
-
         const q = query(
             transactionsRef,
             orderBy("createdAt", "desc")
         );
 
         const snapshot = await getDocs(q);
-
         if (transactionList) {
             transactionList.innerHTML = "";
         }
 
-let totalIncome = 0;
-let totalExpense = 0;
-let visibleCount = 0;
-let transactionFound = false;
+        let totalIncome = 0;
+        let totalExpense = 0;
+        let visibleCount = 0;
+        let transactionFound = false;
 
-const monthlyIncome = Array(12).fill(0);
-const monthlyExpense = Array(12).fill(0);
+        const monthlyIncome = Array(12).fill(0);
+        const monthlyExpense = Array(12).fill(0);
 
-const categoryTotals = {
-    Food: 0,
-    Transport: 0,
-    Shopping: 0,
-    Bills: 0,
-    Others: 0
-};
+        const categoryTotals = { Food: 0, Transport: 0, Shopping: 0, Bills: 0, Others: 0 };
 
-snapshot.forEach(doc => {
-
+        snapshot.forEach(doc => {
             const transaction = doc.data();
             transactionFound = true;
 
-if (transaction.type === "income") {
-    totalIncome += Number(transaction.amount);
-} else {
-    totalExpense += Number(transaction.amount);
-}
+            if (transaction.type === "income") {
+                totalIncome += Number(transaction.amount);
+            } else {
+                totalExpense += Number(transaction.amount);
+            }
 
-const transactionMonth = new Date(transaction.date).getMonth();
+            const transactionMonth = new Date(transaction.date).getMonth();
 
-if (transactionMonth >= 0 && transactionMonth < 12) {
+            if (transactionMonth >= 0 && transactionMonth < 12) {
+                if (transaction.type === "income") {
+                    monthlyIncome[transactionMonth] += Number(transaction.amount);
+                } else {
+                    monthlyExpense[transactionMonth] += Number(transaction.amount);
+                }
+            }
 
-    if (transaction.type === "income") {
-        monthlyIncome[transactionMonth] += Number(transaction.amount);
-    } else {
-        monthlyExpense[transactionMonth] += Number(transaction.amount);
-    }
+            if (transaction.type === "expense") {
+                if (categoryTotals[transaction.category] !== undefined) {
+                    categoryTotals[transaction.category] += Number(transaction.amount);
+                } else {
+                    categoryTotals.Others += Number(transaction.amount);
+                }
+            }
 
-}
-
-if (transaction.type === "expense") {
-
-    if (categoryTotals[transaction.category] !== undefined) {
-        categoryTotals[transaction.category] += Number(transaction.amount);
-    } else {
-        categoryTotals.Others += Number(transaction.amount);
-    }
-
-}
-
-if (transactionList && visibleCount < 3) {
-
+            if (transactionList && visibleCount < 3) {
                 const sign = transaction.type === "income" ? "+" : "-";
-
                 const amountClass =
                     transaction.type === "income"
                         ? "income-text"
@@ -546,15 +386,12 @@ if (transactionList && visibleCount < 3) {
                         </strong>
                     </div>
                 `;
-
                 visibleCount++;
             }
-
         });
 
         if (!transactionFound && transactionList) {
-
-    transactionList.innerHTML = `
+            transactionList.innerHTML = `
         <div class="empty-transactions">
 
             <i class="fa-solid fa-wallet"></i>
@@ -567,24 +404,14 @@ if (transactionList && visibleCount < 3) {
 
         </div>
     `;
-
-}
+        }
 
         const totalBalance = totalIncome - totalExpense;
         const totalSavings = Math.max(totalBalance, 0);
 
-        updateCharts(
-    monthlyIncome,
-    monthlyExpense,
-    categoryTotals
-);
+        updateCharts(monthlyIncome, monthlyExpense, categoryTotals);
 
-updateSmartInsights(
-    totalIncome,
-    totalExpense,
-    totalSavings,
-    categoryTotals
-);
+        updateSmartInsights(totalIncome, totalExpense, totalSavings, categoryTotals);
 
         document.getElementById("totalIncome").textContent =
             "₹" + totalIncome.toLocaleString("en-IN");
@@ -598,9 +425,7 @@ updateSmartInsights(
         document.getElementById("totalSavings").textContent =
             "₹" + totalSavings.toLocaleString("en-IN");
 
-            // ===============================
 // LIVE CARD STATUS
-// ===============================
 
 const expensePercent =
     totalIncome > 0
@@ -634,12 +459,9 @@ document.getElementById("savingsStatus").innerHTML =
     }
 }
 
-// ===============================
 // DASHBOARD TOAST
-// ===============================
 
 function showDashboardToast(message, type = "success") {
-
     const toast = document.createElement("div");
 
     toast.className = `dashboard-toast ${type}`;
@@ -657,17 +479,12 @@ function showDashboardToast(message, type = "success") {
         setTimeout(() => {
             toast.remove();
         }, 300);
-
     }, 3000);
-
 }
 
-// ===============================
 // UPDATE CHARTS
-// ===============================
 
 function updateCharts(monthlyIncome, monthlyExpense, categoryTotals) {
-
     if (incomeExpenseChart) {
         incomeExpenseChart.data.datasets[0].data = monthlyIncome;
         incomeExpenseChart.data.datasets[1].data = monthlyExpense;
@@ -682,18 +499,13 @@ function updateCharts(monthlyIncome, monthlyExpense, categoryTotals) {
             categoryTotals.Bills,
             categoryTotals.Others
         ];
-
         expenseCategoryChart.update();
     }
-
 }
 
-// ===============================
 // UPDATE SMART INSIGHTS
-// ===============================
 
 function updateSmartInsights(totalIncome, totalExpense, totalSavings, categoryTotals) {
-
     const savingRate =
         totalIncome > 0
             ? Math.round((totalSavings / totalIncome) * 100)
@@ -728,12 +540,9 @@ function updateSmartInsights(totalIncome, totalExpense, totalSavings, categoryTo
             : "Maintain this spending pattern to build stronger savings.";
 }
 
-// ===============================
 // FORMAT DATE
-// ===============================
 
 function formatDate(dateValue) {
-
     if (!dateValue) return "No Date";
 
     const date = new Date(dateValue);
@@ -743,15 +552,11 @@ function formatDate(dateValue) {
         month: "short",
         year: "numeric"
     });
-
 }
 
-// ===============================
 // LOGOUT
-// ===============================
 
 const logoutBtn = document.getElementById("logoutBtn");
-
 if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
         try {

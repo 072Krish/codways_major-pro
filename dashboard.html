@@ -67,43 +67,43 @@
                 </a>
 
             </nav>
-<br>
-<br>
-<div class="sidebar-card">
+            <br>
+            <br>
+            <div class="sidebar-card">
 
-    <div class="sidebar-card-icon">
-        <i class="fa-solid fa-shield-halved"></i>
-    </div>
+                <div class="sidebar-card-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
 
-    <h4>Smart Finance</h4>
+                <h4>Smart Finance</h4>
 
-    <p>
-        Securely track your money and build better financial habits.
-    </p>
+                <p>
+                    Securely track your money and build better financial habits.
+                </p>
 
-    <button class="sidebar-card-btn">
-        View Insights
-    </button>
+                <button class="sidebar-card-btn">
+                    View Insights
+                </button>
 
-</div>
+            </div>
 
-<div class="logout-card">
+            <div class="logout-card">
 
-    <div class="logout-icon">
-        <i class="fa-solid fa-right-from-bracket"></i>
-    </div>
+                <div class="logout-icon">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
 
-    <h4>Finished Working ?</h4>
+                <h4>Finished Working ?</h4>
 
-    <p>
-        Save your changes and sign out safely.
-    </p>
+                <p>
+                    Save your changes and sign out safely.
+                </p>
 
-    <button id="logoutBtn" class="logout-btn">
-        Logout
-    </button>
+                <button id="logoutBtn" class="logout-btn">
+                    Logout
+                </button>
 
-</div>
+            </div>
 
         </aside>
 
@@ -111,376 +111,373 @@
         <main class="main-content">
 
             <!-- TOPBAR -->
-<header class="topbar premium-topbar">
+            <header class="topbar premium-topbar">
 
-    <div class="topbar-left">
+                <div class="topbar-left">
 
-        <button class="menu-toggle" id="menuToggle">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
 
-        <div>
-            <h2>Welcome Back 👋</h2>
-            <p>Track your money, analyze spending, and grow your savings.</p>
-        </div>
+                    <div>
+                        <h2>Welcome Back 👋</h2>
+                        <p>Track your money, analyze spending, and grow your savings.</p>
+                    </div>
 
-    </div>
-
-    <div class="topbar-actions">
-
-        <button class="icon-btn">
-            <i class="fa-solid fa-bell"></i>
-        </button>
-
-        <div class="user-profile">
-            <div class="user-avatar">U</div>
-            <div>
-                <h4 id="userName">User</h4>
-                <span>Verified User</span>
-            </div>
-        </div>
-
-    </div>
-
-</header>
-
-            <!-- CONTENT WILL START HERE -->
-<section class="dashboard-content">
-
-    <div class="overview-header">
-<span class="section-label">
-FINANCIAL SUMMARY
-</span>
-
-        <button class="add-btn" id="openModal">
-            <i class="fa-solid fa-plus"></i>
-            Add Transaction
-        </button>
-    </div>
-
-    <div class="overview-grid">
-
-        <div class="overview-card balance">
-            <div class="card-icon">
-                <i class="fa-solid fa-wallet"></i>
-            </div>
-
-            <div>
-                <p>Total Balance</p>
-<h2 id="totalBalance">₹0</h2>
-<span id="balanceStatus"></span>
-            </div>
-        </div>
-
-        <div class="overview-card income">
-            <div class="card-icon">
-                <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-
-            <div>
-                <p>Total Income</p>
-<h2 id="totalIncome">₹0</h2>
-<span id="incomeStatus"></span>
-            </div>
-        </div>
-
-        <div class="overview-card expense">
-            <div class="card-icon">
-                <i class="fa-solid fa-arrow-trend-down"></i>
-            </div>
-
-            <div>
-                <p>Total Expense</p>
-<h2 id="totalExpense">₹0</h2>
-<span id="expenseStatus"></span>
-            </div>
-        </div>
-
-        <div class="overview-card savings">
-            <div class="card-icon">
-                <i class="fa-solid fa-sack-dollar"></i>
-            </div>
-
-            <div>
-                <p>Total Savings</p>
-<h2 id="totalSavings">₹0</h2>
-<span id="savingsStatus"></span>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="dashboard-grid">
-
-    <div class="panel large-panel">
-        <div class="panel-header">
-            <div>
-                <h3>Income vs Expense</h3>
-                <p>Monthly financial comparison</p>
-            </div>
-
-            <span>This Year</span>
-        </div>
-
-<div class="chart-container">
-    <canvas id="incomeExpenseChart"></canvas>
-</div>
-    </div>
-
-    <div class="panel">
-        <div class="panel-header">
-            <div>
-                <h3>Expense Categories</h3>
-                <p>Where your money goes</p>
-            </div>
-        </div>
-
-<div class="chart-container small">
-    <canvas id="expenseCategoryChart"></canvas>
-</div>
-    </div>
-
-</div>
-
-<div class="dashboard-grid second-grid">
-
-    <!-- Recent Transactions -->
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <div>
-
-                <h3>Recent Transactions</h3>
-
-                <p>Your latest financial activities</p>
-
-            </div>
-
-            <a href="#" class="view-all">
-                View All
-            </a>
-
-        </div>
-
-        <div class="transaction-list" id="transactionList">
-
-        </div>
-
-    </div>
-
-    <!-- Smart Insights -->
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h3>Smart Insights</h3>
-
-        </div>
-
-        <div class="insight-box success">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-            <div>
-
-<h4 id="insightTitle1">Excellent Saving</h4>
-<p id="insightText1">You saved 18% more than last month.</p>
-
-            </div>
-
-        </div>
-
-        <div class="insight-box warning">
-
-            <i class="fa-solid fa-triangle-exclamation"></i>
-
-            <div>
-
-<h4 id="insightTitle2">Food Spending</h4>
-<p id="insightText2">Food expenses increased by 9%.</p>
-
-            </div>
-
-        </div>
-
-        <div class="insight-box info">
-
-            <i class="fa-solid fa-lightbulb"></i>
-
-            <div>
-
-<h4 id="insightTitle3">Suggestion</h4>
-<p id="insightText3">Reduce dining expenses to improve savings.</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="dashboard-grid third-grid">
-
-    <!-- Monthly Budget -->
-
-    <div class="panel">
-
-        <div class="panel-header">
-            <div>
-                <h3>Monthly Budget</h3>
-                <p>Your budget usage this month</p>
-            </div>
-
-            <span>72% Used</span>
-        </div>
-
-        <div class="budget-box">
-
-            <div class="budget-circle">
-                <span>72%</span>
-            </div>
-
-<div class="budget-stats">
-
-    <div class="budget-stat">
-        <span>Total Budget</span>
-        <h4>₹25,000</h4>
-    </div>
-
-    <div class="budget-stat">
-        <span>Spent</span>
-        <h4>₹18,000</h4>
-    </div>
-
-    <div class="budget-stat">
-        <span>Remaining</span>
-        <h4>₹7,000</h4>
-    </div>
-
-</div>
-
-        </div>
-
-    </div>
-
-    <!-- Savings Goal -->
-
-    <div class="panel">
-
-        <div class="panel-header">
-            <div>
-                <h3>Savings Goal</h3>
-                <p>Progress toward your target</p>
-            </div>
-
-            <span>64%</span>
-        </div>
-
-        <div class="goal-box">
-
-            <div class="goal-top">
-                <div>
-                    <h4>Emergency Fund</h4>
-                    <p>₹32,000 saved of ₹50,000 goal</p>
                 </div>
 
-                <i class="fa-solid fa-bullseye"></i>
-            </div>
+                <div class="topbar-actions">
 
-            <div class="progress-bar">
-                <span></span>
-            </div>
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
 
-            <div class="goal-meta">
-                <p>₹32,000</p>
-                <p>₹50,000</p>
-            </div>
+                    <div class="user-profile">
+                        <div class="user-avatar">U</div>
+                        <div>
+                            <h4 id="userName">User</h4>
+                            <span>Verified User</span>
+                        </div>
+                    </div>
 
-        </div>
+                </div>
 
-    </div>
+            </header>
 
-</div>
+            <!-- CONTENT WILL START HERE -->
+            <section class="dashboard-content">
 
-</section>
+                <div class="overview-header">
+                    <span class="section-label">
+                        FINANCIAL SUMMARY
+                    </span>
+
+                    <button class="add-btn" id="openModal">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Transaction
+                    </button>
+                </div>
+
+                <div class="overview-grid">
+
+                    <div class="overview-card balance">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+
+                        <div>
+                            <p>Total Balance</p>
+                            <h2 id="totalBalance">₹0</h2>
+                            <span id="balanceStatus"></span>
+                        </div>
+                    </div>
+
+                    <div class="overview-card income">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+
+                        <div>
+                            <p>Total Income</p>
+                            <h2 id="totalIncome">₹0</h2>
+                            <span id="incomeStatus"></span>
+                        </div>
+                    </div>
+
+                    <div class="overview-card expense">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-arrow-trend-down"></i>
+                        </div>
+
+                        <div>
+                            <p>Total Expense</p>
+                            <h2 id="totalExpense">₹0</h2>
+                            <span id="expenseStatus"></span>
+                        </div>
+                    </div>
+
+                    <div class="overview-card savings">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </div>
+
+                        <div>
+                            <p>Total Savings</p>
+                            <h2 id="totalSavings">₹0</h2>
+                            <span id="savingsStatus"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <div class="panel large-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Income vs Expense</h3>
+                                <p>Monthly financial comparison</p>
+                            </div>
+
+                            <span>This Year</span>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="incomeExpenseChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Expense Categories</h3>
+                                <p>Where your money goes</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container small">
+                            <canvas id="expenseCategoryChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid second-grid">
+
+                    <!-- Recent Transactions -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>Recent Transactions</h3>
+
+                                <p>Your latest financial activities</p>
+
+                            </div>
+
+                            <a href="#" class="view-all">
+                                View All
+                            </a>
+
+                        </div>
+
+                        <div class="transaction-list" id="transactionList">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Smart Insights -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <h3>Smart Insights</h3>
+
+                        </div>
+
+                        <div class="insight-box success">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <div>
+
+                                <h4 id="insightTitle1">Excellent Saving</h4>
+                                <p id="insightText1">You saved 18% more than last month.</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="insight-box warning">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                            <div>
+
+                                <h4 id="insightTitle2">Food Spending</h4>
+                                <p id="insightText2">Food expenses increased by 9%.</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="insight-box info">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                            <div>
+
+                                <h4 id="insightTitle3">Suggestion</h4>
+                                <p id="insightText3">Reduce dining expenses to improve savings.</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid third-grid">
+
+                    <!-- Monthly Budget -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Monthly Budget</h3>
+                                <p>Your budget usage this month</p>
+                            </div>
+
+                            <span>72% Used</span>
+                        </div>
+
+                        <div class="budget-box">
+
+                            <div class="budget-circle">
+                                <span>72%</span>
+                            </div>
+
+                            <div class="budget-stats">
+
+                                <div class="budget-stat">
+                                    <span>Total Budget</span>
+                                    <h4>₹25,000</h4>
+                                </div>
+
+                                <div class="budget-stat">
+                                    <span>Spent</span>
+                                    <h4>₹18,000</h4>
+                                </div>
+
+                                <div class="budget-stat">
+                                    <span>Remaining</span>
+                                    <h4>₹7,000</h4>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Savings Goal -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Savings Goal</h3>
+                                <p>Progress toward your target</p>
+                            </div>
+
+                            <span>64%</span>
+                        </div>
+
+                        <div class="goal-box">
+
+                            <div class="goal-top">
+                                <div>
+                                    <h4>Emergency Fund</h4>
+                                    <p>₹32,000 saved of ₹50,000 goal</p>
+                                </div>
+
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+
+                            <div class="progress-bar">
+                                <span></span>
+                            </div>
+
+                            <div class="goal-meta">
+                                <p>₹32,000</p>
+                                <p>₹50,000</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </main>
 
         <!-- ADD TRANSACTION MODAL -->
-<div class="modal-overlay" id="transactionModal">
+        <div class="modal-overlay" id="transactionModal">
 
-    <div class="transaction-modal">
+            <div class="transaction-modal">
 
-        <div class="modal-header">
-            <div>
-                <h3>Add Transaction</h3>
-                <p>Record your income or expense</p>
+                <div class="modal-header">
+                    <div>
+                        <h3>Add Transaction</h3>
+                        <p>Record your income or expense</p>
+                    </div>
+
+                    <button class="close-modal" id="closeModal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <form id="transactionForm">
+
+                    <div class="form-group">
+                        <label>Transaction Title</label>
+                        <input type="text" id="transactionTitle" placeholder="e.g. Salary, Food, Rent" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="transactionAmount" placeholder="Enter amount" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="transactionType" required>
+                                <option value="">Select Type</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="transactionCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Bills">Bills</option>
+                                <option value="Savings">Savings</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="transactionDate" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="saveTransactionBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        Save Transaction
+                    </button>
+
+                </form>
+
             </div>
 
-            <button class="close-modal" id="closeModal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
         </div>
-
-        <form id="transactionForm">
-
-            <div class="form-group">
-                <label>Transaction Title</label>
-                <input type="text" id="transactionTitle" placeholder="e.g. Salary, Food, Rent" required>
-            </div>
-
-            <div class="form-group">
-                <label>Amount</label>
-                <input type="number" id="transactionAmount" placeholder="Enter amount" required>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Type</label>
-                    <select id="transactionType" required>
-                        <option value="">Select Type</option>
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="transactionCategory" required>
-                        <option value="">Select Category</option>
-                        <option value="Salary">Salary</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Shopping">Shopping</option>
-                        <option value="Bills">Bills</option>
-                        <option value="Savings">Savings</option>
-                        <option value="Others">Others</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Date</label>
-                <input type="date" id="transactionDate" required>
-            </div>
-
-            <button
-    type="submit"
-    class="submit-btn"
-    id="saveTransactionBtn">
-                <i class="fa-solid fa-plus"></i>
-                Save Transaction
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
 
     </div>
 

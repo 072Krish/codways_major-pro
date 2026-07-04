@@ -363,3 +363,279 @@ body{
         transform:translateY(0);
     }
 }
+
+/* MOBILE BRAND HEADER (Hidden on Desktop) */
+.mobile-brand {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+.mobile-brand i {
+    font-size: 28px;
+    color: var(--secondary);
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+}
+
+.mobile-brand span {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #93c5fd,
+        #22c55e
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* ================= RESPONSIVE CSS ================= */
+
+/* PART 1: 250px - 480px */
+@media (min-width:250px) and (max-width:480px){
+
+    .signup-page{
+        min-height:100vh;
+    }
+
+    .signup-left{
+        display:none;
+    }
+
+    .signup-right{
+        width:100%;
+        margin-left:0;
+        height:auto;
+        min-height:100vh;
+        padding:18px 12px 28px;
+        align-items:flex-start;
+    }
+
+    .signup-card{
+        width:100%;
+        max-width:100%;
+        margin:0;
+        padding:24px 16px;
+        border-radius:20px;
+    }
+
+    .mobile-brand{
+        display:flex;
+        margin-bottom:20px;
+    }
+
+    .mobile-brand i{
+        font-size:24px;
+    }
+
+    .mobile-brand span{
+        font-size:1.55rem;
+    }
+
+    .signup-card h2{
+        font-size:1.45rem;
+        margin-bottom:8px;
+    }
+
+    .signup-card > p{
+        font-size:.82rem;
+        margin-bottom:24px;
+    }
+
+    .input-group{
+        margin-bottom:18px;
+    }
+
+    .input-group label{
+        font-size:.82rem;
+        margin-bottom:8px;
+    }
+
+    .input-box{
+        padding:0 12px;
+        border-radius:12px;
+    }
+
+    .input-box i{
+        font-size:14px;
+    }
+
+    .input-box input{
+        padding:13px 10px;
+        font-size:.82rem;
+    }
+
+    .signup-btn{
+        margin-top:22px;
+        padding:13px;
+        font-size:.86rem;
+        border-radius:12px;
+    }
+
+    .divider{
+        margin:24px 0;
+        font-size:.82rem;
+    }
+
+    .google-btn{
+        padding:13px;
+        font-size:.86rem;
+        border-radius:12px;
+    }
+
+    .google-note{
+        font-size:.74rem;
+    }
+
+    .login-link{
+        font-size:.82rem;
+        line-height:1.5;
+    }
+}
+
+/* extra tiny fix: 250px - 320px */
+@media (min-width:250px) and (max-width:320px){
+
+    .signup-right{
+        padding:14px 10px 24px;
+    }
+
+    .signup-card{
+        padding:20px 13px;
+        border-radius:18px;
+    }
+
+    .mobile-brand span{
+        font-size:1.35rem;
+    }
+
+    .signup-card h2{
+        font-size:1.28rem;
+    }
+
+    .signup-card > p{
+        font-size:.76rem;
+    }
+
+    .input-box input{
+        font-size:.78rem;
+    }
+
+    .signup-btn,
+    .google-btn{
+        font-size:.8rem;
+    }
+
+    .login-link a{
+        display:block;
+        margin-top:4px;
+    }
+}
+
+/* PART 2: 481px - 1200px */
+@media (min-width:481px) and (max-width:767px){
+
+    .signup-left{
+        display:none;
+    }
+
+    .signup-right{
+        width:100%;
+        margin-left:0;
+        height:auto;
+        min-height:100vh;
+        padding:28px 20px 38px;
+        align-items:center;
+    }
+
+    .signup-card{
+        max-width:460px;
+        padding:34px;
+        margin:0 auto;
+    }
+
+    .mobile-brand{
+        display:flex;
+    }
+
+    .signup-card h2{
+        font-size:1.75rem;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px){
+
+    .signup-left{
+        display:none;
+    }
+
+    .signup-right{
+        width:100%;
+        margin-left:0;
+        height:auto;
+        min-height:100vh;
+        padding:38px 28px 48px;
+        align-items:center;
+    }
+
+    .signup-card{
+        max-width:480px;
+        margin:0 auto;
+        padding:40px;
+    }
+
+    .mobile-brand{
+        display:flex;
+    }
+}
+
+@media (min-width:992px) and (max-width:1200px){
+
+    .signup-left{
+        display:flex;
+        width:calc(100% - 460px);
+        padding:40px;
+    }
+
+    .signup-right{
+        width:460px;
+        padding:26px;
+    }
+
+    .signup-hero-content{
+        transform:none;
+    }
+
+    .signup-hero-content h1{
+        font-size:2.8rem;
+    }
+
+    .signup-hero-content h2{
+        font-size:2.1rem;
+    }
+
+    .signup-hero-content p{
+        font-size:1rem;
+    }
+
+    .gradient-text{
+        font-size:3.6rem;
+    }
+
+    .signup-store-badge{
+        min-width:185px;
+        padding:14px 18px;
+    }
+
+    .signup-card{
+        max-width:400px;
+        padding:34px;
+    }
+}

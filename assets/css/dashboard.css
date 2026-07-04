@@ -1,6 +1,4 @@
-/* ===============================
-   RESET
-=============================== */
+/* RESET */
 
 *{
     margin:0;
@@ -14,13 +12,9 @@ html{
 }
 
 body{
-
     background:#020617;
-
     color:#fff;
-
     overflow-x:hidden;
-
 }
 
 a{
@@ -28,9 +22,7 @@ a{
     color:inherit;
 }
 
-/* ===============================
-   LAYOUT
-=============================== */
+/* LAYOUT */
 
 .dashboard-wrapper{
     display:flex;
@@ -38,9 +30,7 @@ a{
     overflow:hidden;
 }
 
-/* ===============================
-   SIDEBAR
-=============================== */
+/* SIDEBAR */
 
 .sidebar{
     width:280px;
@@ -74,208 +64,129 @@ a{
 }
 
 .sidebar-logo{
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
     font-size:28px;
-
     font-weight:700;
-
     margin-bottom:45px;
-
 }
 
 .sidebar-logo i{
-
     color:#22C55E;
-
 }
 
 .sidebar-logo span{
-
     background:linear-gradient(135deg,#2563EB,#22C55E);
-
     -webkit-background-clip:text;
-
     -webkit-text-fill-color:transparent;
-
 }
 
 .sidebar-menu{
-
     display:flex;
-
     flex-direction:column;
-
     gap:10px;
-
 }
 
 .sidebar-menu a{
-
     padding:14px 18px;
-
     border-radius:14px;
-
     display:flex;
-
     align-items:center;
-
     gap:14px;
-
     color:#CBD5E1;
-
     transition:.3s;
-
 }
 
 .sidebar-menu a:hover{
-
     background:rgba(37,99,235,.15);
-
     color:#fff;
-
 }
 
 .sidebar-menu a.active{
-
     background:linear-gradient(135deg,#2563EB,#22C55E);
-
     color:#fff;
-
 }
 
 .sidebar-card{
-
     margin-top:auto;
-
     padding:22px;
-
     border-radius:22px;
-
     background:linear-gradient(
         135deg,
         rgba(37,99,235,.18),
         rgba(34,197,94,.12)
     );
-
     border:1px solid rgba(255,255,255,.08);
-
     text-align:center;
-
     overflow:hidden;
-
     position:relative;
         margin-top:28px;
     margin-bottom:20px;
     flex-shrink:0;
-
 }
 
 .sidebar-card::before{
-
     content:"";
-
     position:absolute;
-
     width:130px;
     height:130px;
-
     background:rgba(255,255,255,.04);
-
     border-radius:50%;
-
     top:-60px;
     right:-50px;
-
 }
 
 .sidebar-card-icon{
-
     width:70px;
     height:70px;
-
     margin:0 auto 18px;
-
     border-radius:18px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     font-size:28px;
-
     color:#22C55E;
-
     background:rgba(255,255,255,.05);
-
     border:1px solid rgba(255,255,255,.08);
-
 }
 
 .sidebar-card h4{
-
     color:#fff;
-
     font-size:20px;
-
     margin-bottom:10px;
-
 }
 
 .sidebar-card p{
-
     color:#94A3B8;
-
     font-size:14px;
-
     line-height:1.7;
-
     margin-bottom:22px;
-
 }
 
 .sidebar-card-btn{
-
     width:100%;
-
     padding:13px;
-
     border:none;
-
     border-radius:14px;
-
     cursor:pointer;
-
     font-weight:600;
-
     color:#fff;
-
     background:linear-gradient(
         135deg,
         #2563EB,
         #22C55E
     );
-
     transition:.3s;
-
 }
 
 .sidebar-card-btn:hover{
-
     transform:translateY(-2px);
-
     box-shadow:0 12px 30px rgba(37,99,235,.25);
-
 }
 
-/* ===============================
-   LOGOUT CARD
-=============================== */
+/* 
+LOGOUT CARD */
 
 .logout-card{
     margin-top:18px;
@@ -330,9 +241,7 @@ a{
     transform:translateY(-2px);
 }
 
-/* ===============================
-   MAIN CONTENT
-=============================== */
+/* MAIN CONTENT */
 
 .main-content{
     flex:1;
@@ -342,104 +251,62 @@ a{
     overflow-x:hidden;
 }
 
-/* ===============================
-   TOPBAR
-=============================== */
+/* TOPBAR */
 
 .topbar{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:40px;
-
 }
 
 .menu-toggle{
-
     display:none;
-
 }
 
 .topbar h2{
-
     font-size:32px;
-
 }
 
 .topbar p{
-
     color:#94A3B8;
-
     margin-top:6px;
-
 }
 
 .topbar-actions{
-
     display:flex;
-
     align-items:center;
-
     gap:18px;
-
 }
 
 .icon-btn{
-
     width:48px;
-
     height:48px;
-
     border:none;
-
     border-radius:14px;
-
     background:#0F172A;
-
     color:#fff;
-
     cursor:pointer;
-
     font-size:18px;
-
 }
 
 .user-profile{
-
     display:flex;
-
     align-items:center;
-
     gap:14px;
-
     background:#0F172A;
-
     padding:10px 16px;
-
     border-radius:16px;
-
 }
 
 .user-profile span{
-
     display:block;
-
     margin-top:4px;
-
     font-size:13px;
-
     font-weight:500;
-
     color:#94A3B8;
-
     letter-spacing:.2px;
-
     transition:.3s ease;
-
 }
 
 .section-label{
@@ -453,46 +320,28 @@ a{
 }
 
 .user-avatar{
-
     width:46px;
-
     height:46px;
-
     border-radius:50%;
-
     background:linear-gradient(135deg,#2563EB,#22C55E);
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     font-weight:700;
-
 }
 
-/* ===============================
-   DASHBOARD CONTENT
-=============================== */
+/* DASHBOARD CONTENT */
 
 .dashboard-content h1{
-
     font-size:36px;
-
     margin-bottom:10px;
-
 }
 
 .dashboard-content p{
-
     color:#94A3B8;
-
 }
 
-/* ===============================
-   OVERVIEW CARDS
-=============================== */
+/* OVERVIEW CARDS */
 
 .overview-header{
     display:flex;
@@ -568,16 +417,12 @@ a{
 }
 
 .overview-card span{
-
     display:flex;
     align-items:center;
     gap:6px;
-
     margin-top:10px;
-
     font-size:14px;
     font-weight:600;
-
 }
 
 #balanceStatus,
@@ -594,78 +439,7 @@ a{
     font-size:13px;
 }
 
-/* ===============================
-   RESPONSIVE SIDEBAR
-=============================== */
-
-@media(max-width:992px){
-
-    .sidebar{
-        position:fixed;
-        top:0;
-        left:-100%;
-        height:100vh;
-        z-index:1000;
-        transition:.35s ease;
-    }
-
-    .sidebar.active{
-        left:0;
-    }
-
-    .menu-toggle{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        width:46px;
-        height:46px;
-        border:none;
-        border-radius:14px;
-        background:#0F172A;
-        color:#fff;
-        font-size:18px;
-        cursor:pointer;
-    }
-
-    .topbar{
-        align-items:flex-start;
-        gap:18px;
-    }
-
-    .topbar-actions{
-        margin-left:auto;
-    }
-
-}
-
-@media(max-width:650px){
-
-    .main-content{
-        padding:22px;
-    }
-
-    .topbar{
-        flex-wrap:wrap;
-    }
-
-    .topbar h2{
-        font-size:26px;
-    }
-
-    .topbar-actions{
-        width:100%;
-        justify-content:space-between;
-    }
-
-    .user-profile{
-        flex:1;
-    }
-
-}
-
-/* ===============================
-   DASHBOARD GRID PANELS
-=============================== */
+/* DASHBOARD  */
 
 .dashboard-grid{
     margin-top:28px;
@@ -736,9 +510,7 @@ a{
     height:280px;
 }
 
-/* ===============================
-   TRANSACTIONS + INSIGHTS
-=============================== */
+/* TRANSACTIONS + INSIGHTS */
 
 .second-grid{
     grid-template-columns:1.5fr 1fr;
@@ -846,9 +618,7 @@ a{
     color:#2563EB;
 }
 
-/* ===============================
-   BUDGET & SAVINGS GOAL
-=============================== */
+/* BUDGET  */
 
 .third-grid{
     margin-top:24px;
@@ -862,151 +632,81 @@ a{
 }
 
 .budget-circle{
-
     width:150px;
     height:150px;
-
     border-radius:50%;
-
     background:
     conic-gradient(
         #22C55E 72%,
         rgba(255,255,255,.08) 0
     );
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     position:relative;
-
 }
 
 .budget-circle::before{
-
     content:"";
-
     position:absolute;
-
     width:120px;
     height:120px;
-
     border-radius:50%;
-
     background:#0F172A;
-
 }
 
 .budget-circle span{
-
     position:relative;
-
     z-index:2;
-
     font-size:28px;
     font-weight:700;
-
-}
-
-.budget-details{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:22px;
-
-}
-
-.budget-details p{
-
-    color:#94A3B8;
-
-    margin-bottom:5px;
-
-}
-
-.budget-details h4{
-
-    font-size:24px;
-
 }
 
 /* Goal */
 
 .goal-top{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:24px;
-
 }
 
 .goal-top i{
-
     font-size:30px;
-
     color:#22C55E;
-
 }
 
 .goal-top p{
-
     margin-top:6px;
-
     color:#94A3B8;
-
 }
 
 .progress-bar{
-
     height:10px;
-
     border-radius:999px;
-
     background:rgba(255,255,255,.08);
-
     overflow:hidden;
-
 }
 
 .progress-bar span{
-
     display:block;
-
     width:64%;
-
     height:100%;
-
     background:linear-gradient(
         90deg,
         #2563EB,
         #22C55E
     );
-
 }
 
 .goal-meta{
-
     margin-top:14px;
-
     display:flex;
-
     justify-content:space-between;
-
     color:#94A3B8;
-
 }
 
-/* ===============================
-   REAL CHART CONTAINER
-=============================== */
+/* REAL CHART CONTAINER */
 
 .chart-container{
     height:280px;
@@ -1025,9 +725,7 @@ a{
     height:100% !important;
 }
 
-/* ===============================
-   ADD TRANSACTION MODAL
-=============================== */
+/* ADD TRANSACTION MODAL */
 
 .modal-overlay{
     position:fixed;
@@ -1131,9 +829,7 @@ a{
     margin-right:8px;
 }
 
-/* ===============================
-   DASHBOARD TOAST
-=============================== */
+/* DASHBOARD TOAST */
 
 .dashboard-toast{
     position:fixed;
@@ -1162,42 +858,27 @@ a{
     border-color:#EF4444;
 }
 
-/* ===============================
-   EMPTY TRANSACTIONS
-=============================== */
+/* EMPTY TRANSACTIONS */
 
 .empty-transactions{
-
     padding:50px 20px;
-
     text-align:center;
-
     color:#94A3B8;
-
 }
 
 .empty-transactions i{
-
     font-size:50px;
-
     color:#22C55E;
-
     margin-bottom:18px;
-
 }
 
 .empty-transactions h3{
-
     color:#fff;
-
     margin-bottom:10px;
-
 }
 
 .empty-transactions p{
-
     line-height:1.7;
-
 }
 
 .submit-btn:disabled{
@@ -1205,9 +886,7 @@ a{
     cursor:not-allowed;
 }
 
-/* ===============================
-   BUDGET & GOAL COMPACT POLISH
-=============================== */
+/* BUDGET */
 
 .third-grid .panel{
     min-height:280px;
@@ -1276,7 +955,20 @@ a{
     margin-top:18px;
 }
 
-/* Old budget-details hide if still exists */
-.budget-details{
-    display:none;
+/* Date Input */
+
+input[type="date"]{
+    color:#fff;
+    background:#020617;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+    filter:invert(1);
+    cursor:pointer;
+    opacity:1;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover{
+    opacity:.8;
 }

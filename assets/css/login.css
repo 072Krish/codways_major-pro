@@ -456,3 +456,294 @@ textarea{
             translateY(0);
     }
 }
+
+/* ================= RESPONSIVE CSS ================= */
+
+/* PART 1: 250px - 480px */
+@media (min-width:250px) and (max-width:480px){
+
+    .login-page{
+        flex-direction:column;
+        min-height:100vh;
+    }
+
+    .login-left{
+        width:100%;
+        height:auto;
+        min-height:260px;
+        padding:35px 14px;
+    }
+
+    .hero-content{
+        padding:10px;
+        transform:none;
+    }
+
+    .hero-content h1{
+        font-size:2.4rem;
+        letter-spacing:-1px;
+    }
+
+    .hero-content h2{
+        font-size:1.45rem;
+        line-height:1.25;
+        margin-bottom:14px;
+    }
+
+    .hero-content p{
+        display:none;
+    }
+
+    .hero-content p br{
+        display:none;
+    }
+
+    .hero-actions{
+        gap:10px;
+        margin-top:22px;
+    }
+
+    .store-badge{
+        min-width:120px;
+        height:58px;
+        padding:10px 12px;
+        border-radius:13px;
+        gap:9px;
+    }
+
+    .store-badge i{
+        font-size:19px;
+    }
+
+    .store-badge small{
+        font-size:.68rem;
+    }
+
+    .store-badge strong{
+        font-size:.82rem;
+    }
+
+    .login-right{
+        width:100%;
+        height:auto;
+        min-height:calc(100vh - 260px);
+        padding:18px 12px 28px;
+        align-items:flex-start;
+    }
+
+    .login-card{
+        max-width:100%;
+        margin:0;
+        padding:24px 16px;
+        border-radius:20px;
+    }
+
+    .login-card h2{
+        font-size:1.45rem;
+    }
+
+    .login-card > p{
+        font-size:.82rem;
+        margin-bottom:24px;
+    }
+
+    .input-group{
+        margin-bottom:18px;
+    }
+
+    .input-group label{
+        font-size:.82rem;
+    }
+
+    .input-box{
+        padding:0 12px;
+        border-radius:12px;
+    }
+
+    .input-box input{
+        padding:13px 10px;
+        font-size:.82rem;
+    }
+
+    .login-options{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+        margin-bottom:22px;
+    }
+
+    .login-options label,
+    .login-options a{
+        font-size:.8rem;
+    }
+
+    .login-btn,
+    .google-btn{
+        padding:13px;
+        font-size:.86rem;
+        border-radius:12px;
+    }
+
+    .divider{
+        margin:24px 0;
+    }
+
+    .google-note{
+        font-size:.74rem;
+    }
+
+    .signup-link{
+        font-size:.82rem;
+        line-height:1.5;
+    }
+}
+
+/* extra tiny fix: 250px - 320px */
+@media (min-width:480px) and (max-width:520px){
+    .store-badge{
+        display:none;
+    }
+}
+
+/* extra tiny fix: 250px - 320px */
+@media (min-width:250px) and (max-width:320px){
+
+    .login-left{
+        min-height:240px;
+        padding:28px 10px;
+    }
+
+    .hero-content h1{
+        display:none;
+    }
+
+    .hero-content h2{
+        display: none;
+    }
+
+    .hero-content p{
+        display:none;
+    }
+
+    .hero-actions{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .store-badge{
+        display:none;
+    }
+
+    .login-right{
+        padding:14px 10px 24px;
+    }
+
+    .login-card{
+        padding:20px 13px;
+        border-radius:18px;
+    }
+
+    .login-card h2{
+        font-size:1.28rem;
+    }
+
+    .input-box input{
+        font-size:.78rem;
+    }
+
+    .signup-link a{
+        display:block;
+        margin-left:0;
+        margin-top:4px;
+    }
+}
+
+/* PART 2: 481px - 1200px */
+@media (min-width:481px) and (max-width:767px){
+
+    .login-page{
+        flex-direction:column;
+    }
+
+    .login-left{
+        width:100%;
+        height:auto;
+        min-height:330px;
+        padding:45px 24px;
+    }
+
+    .hero-content{
+        transform:none;
+        padding:15px;
+    }
+
+    .hero-content h1{
+        font-size:3.3rem;
+    }
+
+    .hero-content h2{
+        font-size:2rem;
+    }
+
+    .hero-content p{
+        font-size:1.2rem;
+    }
+
+    .login-right{
+        width:100%;
+        height:auto;
+        min-height:calc(100vh - 330px);
+        padding:28px 20px 38px;
+    }
+
+    .login-card{
+        max-width:460px;
+        padding:34px;
+        margin:0 auto;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px){
+
+    .login-page{
+        flex-direction:column;
+    }
+
+    .login-left{
+        width:100%;
+        height:auto;
+        min-height:390px;
+        padding:55px 30px;
+    }
+
+    .hero-content{
+        transform:none;
+    }
+
+    .hero-content h1{
+        font-size:4rem;
+    }
+
+    .hero-content h2{
+        font-size:2.45rem;
+    }
+
+    .hero-content p{
+        font-size:1.3rem;
+    }
+
+    .login-right{
+        width:100%;
+        height:auto;
+        min-height:calc(100vh - 390px);
+        padding:38px 28px 48px;
+        align-items:flex-start;
+    }
+
+    .login-card{
+        max-width:480px;
+        margin:0 auto;
+        padding:40px;
+    }
+}
+
