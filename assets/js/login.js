@@ -73,19 +73,13 @@ loginForm.addEventListener("submit", async (e) => {
 
         console.log(userData);
 
-        // ROLE BASED REDIRECT
+showToast("Login successful.", "success");
 
-        if (userData.role === "admin") {
-            window.location.href = "index.html";
-        }
+setTimeout(() => {
 
-        else if (userData.role === "owner") {
-            window.location.href = "index.html";
-        }
+    window.location.href = "dashboard.html";
 
-        else {
-            window.location.href = "index.html";
-        }
+}, 1000);
     }
 
     catch (error) {
