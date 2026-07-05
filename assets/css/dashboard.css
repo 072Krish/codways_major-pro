@@ -78,7 +78,7 @@ a{
 
 .sidebar-logo span{
     background:linear-gradient(135deg,#2563EB,#22C55E);
-    -webkit-background-clip:text;
+    background-clip : text;
     -webkit-text-fill-color:transparent;
 }
 

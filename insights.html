@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Reports & Analytics</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/insights.css">
+</head>
+<body class="reports-loading">
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>FinWise</span>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-table-columns"></i>
+                    Dashboard
+                </a>
+
+                <a href="transactions.html">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    Transactions
+                </a>
+
+                <a href="reports.html">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Analytics
+                </a>
+
+                <a href="insights.html" class="active">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Insights
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-wallet"></i>
+                    Budget
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-bullseye"></i>
+                    Goals
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+
+            </nav>
+            <br>
+            <br>
+            <div class="sidebar-card">
+
+                <div class="sidebar-card-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h4>Smart Finance</h4>
+
+                <p>
+                    Securely track your money and build better financial habits.
+                </p>
+
+                <button class="sidebar-card-btn">
+                    View Insights
+                </button>
+
+            </div>
+
+<div class="logout-card">
+
+    <!-- Yeh naya wrapper div banayein -->
+    <div class="logout-header">
+        <div class="logout-icon">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+        <h4>Finished Working ?</h4>
+    </div>
+
+    <p>
+        Save your changes and sign out safely.
+    </p>
+
+    <button id="logoutBtn" class="logout-btn">
+        Logout
+    </button>
+
+</div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+<header class="topbar premium-topbar">
+
+    <div class="topbar-left">
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div>
+
+            <h2>Insights Center 💡</h2>
+
+            <p>
+                AI-powered insights to help you save more and spend wisely.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="topbar-actions">
+
+        <div class="insight-status">
+            <i class="fa-solid fa-circle-check"></i>
+            Live Insights
+        </div>
+
+        <div class="user-profile">
+            <div class="user-avatar">U</div>
+            <div>
+                <h4 id="userName">User</h4>
+                <span>Verified User</span>
+            </div>
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ================= INSIGHTS SKELETON ================= -->
+<div id="insightsSkeleton" class="insights-skeleton">
+
+    <div class="skeleton-card skeleton-hero"></div>
+
+    <div class="skeleton-grid four">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+    </div>
+
+    <div class="skeleton-grid two">
+        <div class="skeleton-card skeleton-medium"></div>
+        <div class="skeleton-card skeleton-medium"></div>
+    </div>
+
+    <div class="skeleton-grid two">
+        <div class="skeleton-card skeleton-small"></div>
+        <div class="skeleton-card skeleton-small"></div>
+    </div>
+
+</div>
+
+<!-- ================= REAL CONTENT WRAPPER ================= -->
+<div id="insightsContent" class="insights-content">
+
+<!-- ================= FINANCIAL SNAPSHOT ================= -->
+
+<section class="snapshot-grid">
+
+    <div class="snapshot-card income">
+
+        <div class="snapshot-icon">
+            <i class="fa-solid fa-wallet"></i>
+        </div>
+
+        <div class="snapshot-content">
+
+            <span>Monthly Income</span>
+
+            <h2 id="snapshotIncome">₹0</h2>
+
+            <small id="incomeStatus">
+                Loading...
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="snapshot-card expense">
+
+        <div class="snapshot-icon">
+            <i class="fa-solid fa-credit-card"></i>
+        </div>
+
+        <div class="snapshot-content">
+
+            <span>Monthly Expense</span>
+
+            <h2 id="snapshotExpense">₹0</h2>
+
+            <small id="expenseStatus">
+                Loading...
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="snapshot-card savings">
+
+        <div class="snapshot-icon">
+            <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+
+        <div class="snapshot-content">
+
+            <span>Savings Rate</span>
+
+            <h2 id="snapshotSavingsRate">0%</h2>
+
+            <small id="savingStatus">
+                Loading...
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="snapshot-card health">
+
+        <div class="snapshot-icon">
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+
+        <div class="snapshot-content">
+
+            <span>Financial Health</span>
+
+            <h2 id="snapshotHealth">0%</h2>
+
+            <small id="healthStatusText">
+                Loading...
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SMART RECOMMENDATION ================= -->
+
+<section class="recommendation-section">
+
+    <div class="recommendation-card">
+
+        <div class="recommendation-left">
+
+            <div class="recommendation-icon">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+            </div>
+
+            <div>
+
+
+                <h2 id="recommendationTitle">
+                    Analyzing your financial activity...
+                </h2>
+
+                <p id="recommendationText">
+
+                    We are checking your transactions
+                    to generate personalized recommendations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="recommendation-priority">
+
+            <span>Priority</span>
+
+            <h3 id="recommendationPriority">
+                --
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SPENDING ANALYSIS ================= -->
+
+<section class="analysis-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            Spending Analysis
+        </span>
+
+        <h2>Financial Breakdown</h2>
+
+        <p>
+            Understand where your money goes and identify your spending habits.
+        </p>
+
+    </div>
+
+    <div class="analysis-grid">
+
+        <!-- Highest Spending -->
+
+        <div class="analysis-card">
+
+            <div class="analysis-top">
+
+                <div class="analysis-icon highest">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+
+                <div class="analysis-title">
+
+                    <h4>Highest Spending</h4>
+
+                    <small>
+                        Category where you spend the most
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="analysis-body">
+
+                <h3 id="highestCategory">
+                    --
+                </h3>
+
+                <p id="highestCategoryAmount">
+                    ₹0
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Most Frequent -->
+
+        <div class="analysis-card">
+
+            <div class="analysis-top">
+
+                <div class="analysis-icon frequent">
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
+
+                <div class="analysis-title">
+
+                    <h4>Most Frequent</h4>
+
+                    <small>
+                        Most used expense category
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="analysis-body">
+
+                <h3 id="frequentCategory">
+                    --
+                </h3>
+
+                <p id="frequentCategoryCount">
+                    0 Transactions
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Largest Expense -->
+
+        <div class="analysis-card">
+
+            <div class="analysis-top">
+
+                <div class="analysis-icon transaction">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                </div>
+
+                <div class="analysis-title">
+
+                    <h4>Largest Expense</h4>
+
+                    <small>
+                        Biggest single expense
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="analysis-body">
+
+                <h3 id="largestExpenseTitle">
+                    --
+                </h3>
+
+                <p id="largestExpenseAmount">
+                    ₹0
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Best Saving Month -->
+
+        <div class="analysis-card">
+
+            <div class="analysis-top">
+
+                <div class="analysis-icon saving">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+
+                <div class="analysis-title">
+
+                    <h4>Best Saving Month</h4>
+
+                    <small>
+                        Highest monthly savings
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="analysis-body">
+
+                <h3 id="bestSavingMonth">
+                    --
+                </h3>
+
+                <p id="bestSavingAmount">
+                    ₹0 Saved
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FINANCIAL HABITS ================= -->
+
+<section class="habits-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            Financial Habits
+        </span>
+
+        <h2>Your Money Personality</h2>
+
+        <p>
+            Based on your transactions, we've identified your financial habits.
+        </p>
+
+    </div>
+
+    <div class="habits-grid">
+
+        <!-- Habit 1 -->
+
+        <div class="habit-card">
+
+            <div class="habit-icon excellent">
+                <i class="fa-solid fa-piggy-bank"></i>
+            </div>
+
+            <div class="habit-content">
+
+                <h4 id="habitOneTitle">
+                    Excellent Saver
+                </h4>
+
+                <p id="habitOneText">
+                    Saving rate is above average.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Habit 2 -->
+
+        <div class="habit-card">
+
+            <div class="habit-icon budget">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+
+            <div class="habit-content">
+
+                <h4 id="habitTwoTitle">
+                    Budget Conscious
+                </h4>
+
+                <p id="habitTwoText">
+                    Expenses are under control.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Habit 3 -->
+
+        <div class="habit-card">
+
+            <div class="habit-icon income">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="habit-content">
+
+                <h4 id="habitThreeTitle">
+                    Consistent Earner
+                </h4>
+
+                <p id="habitThreeText">
+                    Income is recorded regularly.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Habit 4 -->
+
+        <div class="habit-card">
+
+            <div class="habit-icon planner">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <div class="habit-content">
+
+                <h4 id="habitFourTitle">
+                    Smart Planner
+                </h4>
+
+                <p id="habitFourText">
+                    Financial planning is improving.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MONEY SAVING TIPS ================= -->
+
+<section class="tips-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            Money Saving Tips
+        </span>
+
+        <h2>Personalized Recommendations</h2>
+
+        <p>
+            Smart suggestions to improve your financial habits and maximize your savings.
+        </p>
+
+    </div>
+
+    <div class="tips-grid">
+
+        <!-- Tip 1 -->
+
+        <div class="tip-card">
+
+            <div class="tip-top">
+
+                <div class="tip-icon shopping">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <div class="tip-content">
+
+                    <h4 id="tipTitle1">
+                        Reduce Shopping
+                    </h4>
+
+                    <p id="tipText1">
+                        Reduce unnecessary shopping expenses this month.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Tip 2 -->
+
+        <div class="tip-card">
+
+            <div class="tip-top">
+
+                <div class="tip-icon food">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div class="tip-content">
+
+                    <h4 id="tipTitle2">
+                        Dining Budget
+                    </h4>
+
+                    <p id="tipText2">
+                        Plan meals to reduce food expenses.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Tip 3 -->
+
+        <div class="tip-card">
+
+            <div class="tip-top">
+
+                <div class="tip-icon saving">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+
+                <div class="tip-content">
+
+                    <h4 id="tipTitle3">
+                        Increase Savings
+                    </h4>
+
+                    <p id="tipText3">
+                        Save at least 20% of your monthly income.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Tip 4 -->
+
+        <div class="tip-card">
+
+            <div class="tip-top">
+
+                <div class="tip-icon tracking">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div class="tip-content">
+
+                    <h4 id="tipTitle4">
+                        Track Every Expense
+                    </h4>
+
+                    <p id="tipText4">
+                        Recording every transaction improves financial awareness.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+    <script type="module" src="assets/js/insights.js"></script>
+</body>
+
+</html>
