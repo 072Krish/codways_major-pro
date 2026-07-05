@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise | Transactions</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/transactions.css">
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>FinWise</span>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html" >
+                    <i class="fa-solid fa-table-columns"></i>
+                    Dashboard
+                </a>
+
+                <a href="transactions.html" class="active">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    Transactions
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Analytics
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Insights
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-wallet"></i>
+                    Budget
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-bullseye"></i>
+                    Goals
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+
+            </nav>
+            <br>
+            <br>
+            <div class="sidebar-card">
+
+                <div class="sidebar-card-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h4>Smart Finance</h4>
+
+                <p>
+                    Securely track your money and build better financial habits.
+                </p>
+
+                <button class="sidebar-card-btn">
+                    View Insights
+                </button>
+
+            </div>
+
+<div class="logout-card">
+
+    <!-- Yeh naya wrapper div banayein -->
+    <div class="logout-header">
+        <div class="logout-icon">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+        <h4>Finished Working ?</h4>
+    </div>
+
+    <p>
+        Save your changes and sign out safely.
+    </p>
+
+    <button id="logoutBtn" class="logout-btn">
+        Logout
+    </button>
+
+</div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+<header class="topbar">
+
+    <!-- Left Side -->
+    <div class="header-left">
+
+        <button id="menuToggle" class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="welcome">
+
+            <h1>All Transactions</h1>
+
+            <p>
+                Search, filter, edit and organize your financial records.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="top-actions">
+
+        <button
+            id="resetFilters"
+            class="reset-filter-btn"
+            title="Reset Filters">
+
+            <i class="fa-solid fa-rotate-left"></i>
+
+        </button>
+
+        <button
+            id="openFilter"
+            class="filter-btn">
+
+            <i class="fa-solid fa-filter"></i>
+
+            Filters
+
+        </button>
+
+        <button
+            id="addTransactionBtn"
+            class="add-transaction-btn">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Transaction
+
+        </button>
+
+    </div>
+
+</header>
+
+<section class="transactions-content">
+
+    <!-- STATS CARDS -->
+    <div class="transactions-stats">
+
+        <div class="transaction-stat-card">
+            <div class="stat-icon income-stat">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div>
+                <p>Total Income</p>
+                <h3 id="txTotalIncome">₹0</h3>
+            </div>
+        </div>
+
+        <div class="transaction-stat-card">
+            <div class="stat-icon expense-stat">
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+            <div>
+                <p>Total Expense</p>
+                <h3 id="txTotalExpense">₹0</h3>
+            </div>
+        </div>
+
+        <div class="transaction-stat-card">
+            <div class="stat-icon balance-stat">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+
+            <div>
+                <p>Net Balance</p>
+                <h3 id="txNetBalance">₹0</h3>
+            </div>
+        </div>
+
+        <div class="transaction-stat-card">
+            <div class="stat-icon count-stat">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <div>
+                <p>Total Records</p>
+                <h3 id="txTotalCount">0</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TRANSACTIONS TABLE -->
+    <div class="transactions-panel">
+
+        <div class="table-header">
+            <div>
+                <h2>Transaction Records</h2>
+                <p>All your income and expense entries in one place.</p>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="transactions-table">
+
+                <thead>
+                    <tr>
+                        <th>Transaction</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="transactionsTableBody">
+                    <!-- JS DATA -->
+                </tbody>
+
+            </table>
+
+            <div class="pagination-wrapper">
+
+    <p id="paginationInfo" class="pagination-info">
+        Showing 0 of 0 transactions
+    </p>
+
+    <div id="pagination" class="pagination"></div>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FILTER DRAWER OVERLAY -->
+<div class="filter-overlay" id="filterOverlay"></div>
+
+<!-- FILTER DRAWER -->
+<aside class="filter-drawer" id="filterDrawer">
+
+    <div class="filter-drawer-header">
+
+        <div>
+            <h3>Filter Transactions</h3>
+            <p>Search, filter and sort your records.</p>
+        </div>
+
+        <button class="close-filter" id="closeFilter">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+    <div class="filter-form">
+
+        <div class="filter-group">
+            <label>Search Transaction</label>
+
+            <div class="drawer-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by title or category">
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label>Filter By Type</label>
+
+            <select id="typeFilter">
+                <option value="">All Types</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Filter Category</label>
+
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="Salary">Salary</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills">Bills</option>
+                <option value="Savings">Savings</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Sort Transactions</label>
+
+            <select id="sortTransactions">
+                <option value="latest">Latest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="high">Highest Amount</option>
+                <option value="low">Lowest Amount</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="filter-actions">
+
+        <button class="apply-filter-btn" id="applyFilters">
+            <i class="fa-solid fa-check"></i>
+            Apply Filters
+        </button>
+
+        <button class="drawer-reset-btn" id="drawerResetFilters">
+            <i class="fa-solid fa-rotate-left"></i>
+            Reset
+        </button>
+
+    </div>
+
+</aside>
+</main>
+
+        <!-- ADD TRANSACTION MODAL -->
+        <div class="modal-overlay" id="transactionModal">
+
+            <div class="transaction-modal">
+
+                <div class="modal-header">
+                    <div>
+                        <h3>Add Transaction</h3>
+                        <p>Record your income or expense</p>
+                    </div>
+
+                    <button class="close-modal" id="closeModal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <form id="transactionForm">
+
+                    <div class="form-group">
+                        <label>Transaction Title</label>
+                        <input type="text" id="transactionTitle" placeholder="e.g. Salary, Food, Rent" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="transactionAmount" placeholder="Enter amount" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="transactionType" required>
+                                <option value="">Select Type</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="transactionCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Bills">Bills</option>
+                                <option value="Savings">Savings</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="transactionDate" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="saveTransactionBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        Save Transaction
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="assets/js/transactions.js"></script>
+</body>
+</html>

@@ -557,14 +557,42 @@ function formatDate(dateValue) {
 // LOGOUT
 
 const logoutBtn = document.getElementById("logoutBtn");
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-        try {
-            await signOut(auth);
+
+async function logoutUser(message = "Logged out successfully", type = "success") {
+    try {
+        await signOut(auth);
+        showDashboardToast(message, type);
+        setTimeout(() => {
             window.location.href = "login.html";
-        } catch (error) {
-            console.error("Logout Error:", error);
-            showDashboardToast("Logout failed", "error");
-        }
-    });
+        }, 1200);
+
+    } catch (error) {
+        console.error("Logout Error:", error);
+        showDashboardToast("Logout failed", "error");
+    }
 }
+
+logoutBtn?.addEventListener("click", () => {
+    logoutUser();
+});
+
+// AUTO LOGOUT
+
+const AUTO_LOGOUT_TIME = 5 * 60 * 1000;
+let logoutTimer;
+
+function resetLogoutTimer() {
+    clearTimeout(logoutTimer);
+    logoutTimer = setTimeout(() => {
+        logoutUser(
+            "Session expired due to inactivity",
+            "error"
+        );
+    }, AUTO_LOGOUT_TIME);
+}
+
+["mousemove","mousedown","click","scroll","keypress","touchstart"].forEach(event => {
+    document.addEventListener(event,startLogoutTimer);
+});
+
+startLogoutTimer();
