@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Reports & Analytics</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/reports.css">
+</head>
+<body class="reports-loading">
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>FinWise</span>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-table-columns"></i>
+                    Dashboard
+                </a>
+
+                <a href="transactions.html">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    Transactions
+                </a>
+
+                <a href="reports.html"  class="active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Analytics
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Insights
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-wallet"></i>
+                    Budget
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-bullseye"></i>
+                    Goals
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+
+            </nav>
+            <br>
+            <br>
+            <div class="sidebar-card">
+
+                <div class="sidebar-card-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h4>Smart Finance</h4>
+
+                <p>
+                    Securely track your money and build better financial habits.
+                </p>
+
+                <button class="sidebar-card-btn">
+                    View Insights
+                </button>
+
+            </div>
+
+<div class="logout-card">
+
+    <!-- Yeh naya wrapper div banayein -->
+    <div class="logout-header">
+        <div class="logout-icon">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+        <h4>Finished Working ?</h4>
+    </div>
+
+    <p>
+        Save your changes and sign out safely.
+    </p>
+
+    <button id="logoutBtn" class="logout-btn">
+        Logout
+    </button>
+
+</div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar premium-topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h2>Reports & Analytics </h2>
+                        <p>Visualize your financial performance with interactive charts and insights.</p>
+                    </div>
+
+                </div>
+
+                <div class="topbar-actions">
+
+                    <div class="user-profile">
+                        <div class="user-avatar">U</div>
+                        <div>
+                            <h4 id="userName">User</h4>
+                            <span>Verified User</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div id="reportsLoader" class="reports-loader">
+
+    <div class="loader-card"></div>
+
+    <div class="loader-cards">
+        <div class="loader-small"></div>
+        <div class="loader-small"></div>
+        <div class="loader-small"></div>
+        <div class="loader-small"></div>
+    </div>
+
+    <div class="loader-chart"></div>
+
+    <div class="loader-chart"></div>
+
+</div>
+
+            <!-- Summary Cards -->
+<!-- REPORT FILTER BAR -->
+<section class="reports-filter-bar">
+
+    <div>
+        <span class="section-label">Analytics Overview</span>
+        <p>Analyze your income, expenses, savings and category trends.</p>
+    </div>
+
+    <div class="report-filters">
+
+        <select id="monthFilter">
+            <option value="all">All Months</option>
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
+
+        <select id="yearFilter">
+            <option value="all">All Years</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+        </select>
+
+        <button id="resetReportFilters">
+            <i class="fa-solid fa-rotate-right"></i>
+            Reset
+        </button>
+
+        
+
+    </div>
+
+</section>
+
+<!-- REPORT SUMMARY CARDS -->
+<section class="report-cards">
+
+    <div class="report-card income-card">
+        <div class="report-card-top">
+            <div class="card-icon income">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+            <span>Total Income</span>
+        </div>
+
+        <h3 id="totalIncome">₹0</h3>
+        <p>Total money received</p>
+    </div>
+
+    <div class="report-card expense-card">
+        <div class="report-card-top">
+            <div class="card-icon expense">
+                <i class="fa-solid fa-arrow-trend-down"></i>
+            </div>
+            <span>Total Expense</span>
+        </div>
+
+        <h3 id="totalExpense">₹0</h3>
+        <p>Total money spent</p>
+    </div>
+
+    <div class="report-card savings-card">
+        <div class="report-card-top">
+            <div class="card-icon balance">
+                <i class="fa-solid fa-piggy-bank"></i>
+            </div>
+            <span>Net Savings</span>
+        </div>
+
+        <h3 id="netBalance">₹0</h3>
+        <p>Income minus expenses</p>
+    </div>
+
+    <div class="report-card transaction-card">
+        <div class="report-card-top">
+            <div class="card-icon transactions">
+                <i class="fa-solid fa-receipt"></i>
+            </div>
+            <span>Transactions</span>
+        </div>
+
+        <h3 id="totalTransactions">0</h3>
+        <p>Total records analyzed</p>
+    </div>
+
+</section>
+
+<section class="health-section">
+
+    <div class="health-card">
+
+        <div class="health-left">
+            <span class="section-label">Financial Health</span>
+            <h3>Your Money Score</h3>
+            <p>
+                Score is calculated from income, expenses,
+                savings and spending balance.
+            </p>
+        </div>
+
+        <div class="health-score-box">
+            <div class="score-circle">
+                <span id="healthScore">0%</span>
+            </div>
+
+            <div>
+                <h4 id="healthStatus">Analyzing</h4>
+                <p id="healthMessage">
+                    Add transactions to calculate your score.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CHARTS AREA -->
+<section class="charts-grid">
+
+    <!-- 1 -->
+    <div class="chart-card chart-large">
+        <div class="chart-header">
+            <div>
+                <h3>Income vs Expense</h3>
+                <p>Compare total income and spending</p>
+            </div>
+            <span class="chart-badge">Overview</span>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="incomeExpenseChart"></canvas>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div>
+                <h3>Category Breakdown</h3>
+                <p>Spending by category</p>
+            </div>
+            <span class="chart-badge">Category</span>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div>
+                <h3>Cash Flow Trend</h3>
+                <p>Income and expense movement</p>
+            </div>
+            <span class="chart-badge">Trend</span>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="cashFlowChart"></canvas>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div>
+                <h3>Monthly Spending</h3>
+                <p>Month-wise expense history</p>
+            </div>
+            <span class="chart-badge">Monthly</span>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="monthlySpendingChart"></canvas>
+        </div>
+    </div>
+
+
+    <!-- 6 -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div>
+                <h3>Savings Performance</h3>
+                <p>Monthly savings comparison</p>
+            </div>
+            <span class="chart-badge">Savings</span>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="savingsChart"></canvas>
+        </div>
+    </div>
+
+</section>
+
+<!-- INSIGHTS AREA -->
+<section class="insights-grid">
+
+    <div class="insight-card">
+        <div class="insight-header">
+            <div>
+                <h3>Top Spending Categories</h3>
+                <p>Your highest expense areas</p>
+            </div>
+
+            <i class="fa-solid fa-ranking-star"></i>
+        </div>
+
+        <div id="topCategoriesList" class="top-category-list">
+            <!-- JS -->
+        </div>
+    </div>
+
+    <div class="insight-card">
+        <div class="insight-header">
+            <div>
+                <h3>Quick Financial Stats</h3>
+                <p>Important numbers from your records</p>
+            </div>
+
+            <i class="fa-solid fa-chart-simple"></i>
+        </div>
+
+        <div class="quick-stats">
+            <div>
+                <span>Highest Expense</span>
+                <strong id="highestExpense">₹0</strong>
+            </div>
+
+            <div>
+                <span>Average Expense</span>
+                <strong id="averageExpense">₹0</strong>
+            </div>
+
+            <div>
+                <span>Best Saving Month</span>
+                <strong id="bestSavingMonth">-</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-card smart-insight">
+        <div class="insight-header">
+            <div>
+                <h3>Smart Insight</h3>
+                <p>Personalized financial suggestion</p>
+            </div>
+
+            <i class="fa-solid fa-lightbulb"></i>
+        </div>
+
+        <div class="smart-box">
+            <h4 id="smartInsightTitle">Analyzing your data...</h4>
+            <p id="smartInsightText">
+                Add more transactions to generate personalized insights.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+    <div
+    id="reportsEmptyState"
+    class="reports-empty">
+
+    <i class="fa-solid fa-chart-column"></i>
+
+    <h2>No Reports Yet</h2>
+
+    <p>
+
+        Start adding income and expense
+        transactions to generate beautiful
+        financial reports.
+
+    </p>
+
+</div>
+</main>
+</div>
+
+<script type="module" src="assets/js/reports.js"></script>
+
+</body>
+</html>

@@ -114,25 +114,50 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 async function loadTransactions() {
-    const tableBody = document.getElementById("transactionsTableBody");
+
+    const tableBody =
+        document.getElementById("transactionsTableBody");
 
     if (!tableBody || !currentUser) return;
+
     showTableSkeleton();
 
-    const transactionsRef = collection(db, "users", currentUser.uid, "transactions");
+    const transactionsRef =
+        collection(
+            db,
+            "users",
+            currentUser.uid,
+            "transactions"
+        );
 
-    const q = query(transactionsRef, orderBy("createdAt", "desc"));
+    const q =
+        query(
+            transactionsRef,
+            orderBy("createdAt","desc")
+        );
 
-    const snapshot = await getDocs(q);
+    const snapshot =
+        await getDocs(q);
+
     allTransactions = [];
 
     snapshot.forEach(doc => {
+
         allTransactions.push({
-            id: doc.id,
+            id:doc.id,
             ...doc.data()
         });
+
     });
-    applyFilters();
+
+    setTimeout(() => {
+
+        document.body.classList.remove("transactions-loading");
+
+        applyFilters();
+
+    },1000);
+
 }
 
 // TABLE SKELETON

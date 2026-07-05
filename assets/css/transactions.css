@@ -967,3 +967,76 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
     color:#ffffff;
     padding:0 6px;
 }
+
+/* ================= INITIAL PAGE LOADING ================= */
+
+body.transactions-loading .transactions-content{
+    display:none;
+}
+
+body.transactions-loading .table-header{
+    display:none;
+}
+
+body.transactions-loading .transactions-loader{
+    display:block;
+}
+
+.transactions-loader{
+    display:none;
+}
+
+.loader-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    margin-bottom:24px;
+}
+
+.loader-small,
+.loader-chart{
+    position:relative;
+    overflow:hidden;
+    border-radius:22px;
+    background:#020617;
+}
+
+.loader-small{
+    height:120px;
+}
+
+.loader-chart{
+    height:520px;
+}
+
+.loader-small::before,
+.loader-chart::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    animation:loading 1.2s infinite;
+}
+
+@keyframes loading{
+
+    from{
+        transform:translateX(-100%);
+    }
+
+    to{
+        transform:translateX(100%);
+    }
+
+}
